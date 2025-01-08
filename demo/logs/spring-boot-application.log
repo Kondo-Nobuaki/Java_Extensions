@@ -1,0 +1,29 @@
+2025-01-08T09:38:59.720Z  INFO 305209 --- [restartedMain] com.example.MyTomcatServerApplication    : Starting MyTomcatServerApplication using Java 21.0.5 with PID 305209 (/workspaces/Java_Extensions/demo/target/classes started by codespace in /workspaces/Java_Extensions/demo)
+2025-01-08T09:38:59.723Z DEBUG 305209 --- [restartedMain] com.example.MyTomcatServerApplication    : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-01-08T09:38:59.724Z  INFO 305209 --- [restartedMain] com.example.MyTomcatServerApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-08T09:38:59.785Z  INFO 305209 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-08T09:38:59.786Z  INFO 305209 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-08T09:39:00.786Z  INFO 305209 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-08T09:39:00.799Z  INFO 305209 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-08T09:39:00.799Z  INFO 305209 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-08T09:39:00.830Z  INFO 305209 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-08T09:39:00.830Z  INFO 305209 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1044 ms
+2025-01-08T09:39:01.138Z  WARN 305209 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-08T09:39:01.152Z  WARN 305209 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-01-08T09:39:01.171Z  INFO 305209 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-08T09:39:01.187Z ERROR 305209 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
