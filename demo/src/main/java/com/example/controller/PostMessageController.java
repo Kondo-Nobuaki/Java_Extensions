@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.CopilotResponce.CopilotResponce;
+import com.example.CopilotResponce.*;
 import com.example.dto.Payload;
 import com.example.dto.PayloadMessage;
 import com.example.dto.User;
@@ -61,15 +61,14 @@ public class PostMessageController {
                 requestEntity,
                 CopilotResponce.class
         );
-        CopilotResponce responseBody = copilotLLMResponse.getBody();
-        logger.debug("■■　response.StatusCode = " + copilotLLMResponse.getStatusCode().toString());
-        logger.debug("■■　response = " + copilotLLMResponse.getBody());
-String c = responseBody.getChoices().stream()
-    .filter(content -> StringUtils.endsWithIgnoreCase(content.getMessage().getRole(), "assistant"))
-    .map(m->m.getMessage().getContent())
-    .collect(Collectors.joining());
-        writeResponse(response, c);
-        return ResponseEntity.ok(c);
+        var contentMessage = copilotLLMResponse.getBody().getChoices().stream()
+            .filter(content -> StringUtils.endsWithIgnoreCase(content.getMessage().getRole(), "assistant"))
+            .map(m->m.getMessage())
+            .collect(Collectors.toList());
+//        writeResponse(response, c);
+        var answer = contentMessage.stream().map(m->"data: {\"choices\":[{\"index\":0,\"delta\":{\"content\":" + m.getContent() + ",\"role\":\"" + m.getRole() + "\"}}}]}").collect(Collectors.joining("\n"));
+        var finishReason = "data: {\"choices\":[{\"index\":0,\"finish_reason\":\"stop\",\"delta\":{\"content\":null}}]}";
+        return ResponseEntity.ok(answer + "\n" + finishReason);
     }
 
     private void writeResponse(HttpServletResponse response, String message) {
